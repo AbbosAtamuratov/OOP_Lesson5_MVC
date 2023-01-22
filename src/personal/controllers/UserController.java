@@ -1,16 +1,18 @@
 package personal.controllers;
 
 import personal.model.Repository;
+import personal.model.FileOperationXML;
 import personal.model.User;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class UserController {
     private final Repository repository;
+    private String fileType;
 
     public UserController(Repository repository) {
         this.repository = repository;
+        this.fileType = repository.getFileType();
     }
 
     public void saveUser(User user) throws Exception {
@@ -62,4 +64,13 @@ public class UserController {
         }
         throw new Exception("No such ID here");
     }
+    public void deleteById (String inputId){
+        repository.deleteById(inputId);
+    }
+
+    public String getFileType() { return fileType; }
+    //    public void toXML(){
+//        List<User> users = repository.getAllUsers();
+//        FileOperationXML rXml = new FileOperationXML("users.xml");
+//    }
 }

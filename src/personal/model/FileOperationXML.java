@@ -3,20 +3,24 @@ package personal.model;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
 
-public class FileOperationImpl implements FileOperation {
+public class FileOperationXML implements FileOperation{
 
     private String fileName;
 
-    public FileOperationImpl(String fileName) {
-        this.fileName = fileName;
-        try (FileWriter writer = new FileWriter(fileName, true)) {
-            writer.flush();
-        } catch (IOException ex) {
-            System.out.println(ex.getMessage());
-        }
-    }
 
+//    public void saveAllLines(List<User> users, String filePath) {
+//        StringBuilder xmlTemplate = new StringBuilder();
+//        xmlTemplate.append("<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\n");
+//        xmlTemplate.append("<Phonebook>\n");
+//        users.forEach(i -> xmlTemplate.append(""));
+//        xmlTemplate.append("</Phonebook>");
+//        System.out.println(xmlTemplate.toString());
+//    }
+
+    @Override
     public List<String> readAllLines() {
         List<String> lines = new ArrayList<>();
         try {
@@ -46,6 +50,7 @@ public class FileOperationImpl implements FileOperation {
         return lines;
     }
 
+    @Override
     public void saveAllLines(List<String> lines) {
         try (FileWriter writer = new FileWriter(fileName, false)) {
             for (String line : lines) {
@@ -59,4 +64,10 @@ public class FileOperationImpl implements FileOperation {
             System.out.println(ex.getMessage());
         }
     }
-}
+
+    @Override
+    public String getFileType() { return fileName.substring(fileName.length()-3);}
+
+    }
+
+

@@ -1,0 +1,14 @@
+<BookStore>
+    	<book id="b101">
+    		<name>Java Tutorial</name>
+    		<price>$5.00</price>
+    	</book>
+        	<book id="b102">
+        		<name>PHP Tutorial</name>
+        		<price>$4.75</price>
+        	</book>
+        	<book id="b103">
+        		<name>Visual Basic Tutorial</name>
+        		<price>$3.50</price>
+        	</book>
+        </BookStore>

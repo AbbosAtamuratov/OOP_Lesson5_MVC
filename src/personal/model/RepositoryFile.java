@@ -4,11 +4,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RepositoryFile implements Repository {
-    private UserMapper mapper = new UserMapper();
+    private UserMapper mapper;
     private FileOperation fileOperation;
 
     public RepositoryFile(FileOperation fileOperation) {
         this.fileOperation = fileOperation;
+        if (fileOperation.getFileType().equals("txt"))
+            this.mapper = new UserMapperTXT();
+        else
+            this.mapper = new UserMapperXml();
     }
 
     @Override
@@ -50,6 +54,14 @@ public class RepositoryFile implements Repository {
         writeDown(users);
     }
 
+    @Override
+    public void deleteById(String inputId) {
+        List<User> users = getAllUsers();
+        User target = users.stream().filter(i -> i.getId().equals(inputId)).findFirst().get();
+        users.remove(target);
+        writeDown(users);
+    }
+
     private void writeDown (List<User> users){
         List<String> lines = new ArrayList<>();
         for (User item: users) {
@@ -57,4 +69,7 @@ public class RepositoryFile implements Repository {
         }
         fileOperation.saveAllLines(lines);
     }
+
+    @Override
+    public String getFileType() { return fileOperation.getFileType(); }
 }

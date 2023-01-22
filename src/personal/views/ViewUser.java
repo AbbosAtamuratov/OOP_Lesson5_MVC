@@ -15,6 +15,7 @@ public class ViewUser {
     }
 
     public void run() {
+
         Commands com = Commands.NONE;
 
         while (true) {
@@ -42,6 +43,13 @@ public class ViewUser {
                         String numId = prompt("Какой контакт редактировать? Введите номер ID: ");
                         userController.idPresenceValidation(numId);
                         userController.updateUser(numId, createAGuy());
+                        break;
+                    case DELETE:
+                        String indId = prompt("Идентификатор пользователя: ");
+                        userController.deleteById(indId);
+                        break;
+                    case XML:
+                        System.out.println(userController.getFileType());
                         break;
                 }
             } catch (Exception e) {
