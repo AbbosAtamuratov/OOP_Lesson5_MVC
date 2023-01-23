@@ -1,5 +1,7 @@
 package personal.model;
 
+import java.util.HashMap;
+
 public class User {
     private String id = "";
     private String firstName;
@@ -15,6 +17,12 @@ public class User {
     public User(String id, String firstName, String lastName, String phone) {
         this(firstName, lastName, phone);
         this.id = id;
+    }
+
+    public User (HashMap<String, String> user){
+        this.firstName = user.get("firstName");
+        this.lastName = user.get("lastName");
+        this.phone = user.get("phone");
     }
 
     public String getId() {

@@ -3,13 +3,14 @@ package personal.model;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
-public class FileOperationImpl implements FileOperation {
+public class FileManager implements FileOperation {
 
     private String fileName;
 
-    public FileOperationImpl(String fileName) {
-        this.fileName = fileName;
+    public FileManager() {
+        this.fileName = formatChooser();
         try (FileWriter writer = new FileWriter(fileName, true)) {
             writer.flush();
         } catch (IOException ex) {
@@ -57,6 +58,24 @@ public class FileOperationImpl implements FileOperation {
             writer.flush();
         } catch (IOException ex) {
             System.out.println(ex.getMessage());
+        }
+    }
+
+    public String getFileName() { return fileName; }
+
+    private String formatChooser(){
+        System.out.println("C каким фоматом будем работать?\n" +
+                "1. txt\n" +
+                "2. xml\n");
+        Scanner scanner = new Scanner(System.in);
+        String respond = scanner.nextLine();
+        if (respond.toLowerCase().contains("txt") || respond.equals("1"))
+            return "users.txt";
+        else if (respond.toLowerCase().contains("xml") || respond.equals("2"))
+            return "users.xml";
+        else {
+            System.out.println("Команда не распознана. До свидания...");
+            return null;
         }
     }
 }
