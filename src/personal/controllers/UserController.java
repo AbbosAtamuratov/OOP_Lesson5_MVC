@@ -62,4 +62,8 @@ public class UserController {
         }
         throw new Exception("No such ID here");
     }
+
+    public void deleteById(String inputId) {
+        repository.deleteById(inputId);
+    }
 }

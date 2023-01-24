@@ -43,6 +43,11 @@ public class ViewUser {
                         userController.idPresenceValidation(numId);
                         userController.updateUser(numId, createAGuy());
                         break;
+                    case DELETE:
+                        String inpId = prompt("Какой контакт редактировать? Введите номер ID: ");
+                        userController.idPresenceValidation(inpId);
+                        userController.deleteById(inpId);
+                        break;
                 }
             } catch (Exception e) {
                 System.out.println("Oopsie!\n"+ e.getMessage()); ;
