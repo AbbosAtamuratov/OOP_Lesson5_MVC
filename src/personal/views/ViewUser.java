@@ -68,4 +68,5 @@ public class ViewUser {
         User newGuy = new User(firstName, lastName, phone);
         return newGuy;
     }
+    //tested
 }
