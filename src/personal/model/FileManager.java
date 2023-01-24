@@ -75,7 +75,7 @@ public class FileManager implements FileOperation {
             return "users.xml";
         else {
             System.out.println("Команда не распознана. До свидания...");
-            return null;
+            return "unchosen";
         }
     }
 }
