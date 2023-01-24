@@ -4,11 +4,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RepositoryFile implements Repository {
-    private UserMapper mapper = new UserMapper();
+    private Mapper mapper;
     private FileOperation fileOperation;
 
     public RepositoryFile(FileOperation fileOperation) {
         this.fileOperation = fileOperation;
+        if (((FileManager)fileOperation).getFileName().contains("txt"))
+            this.mapper = new TxtMapper();
+        else if (((FileManager)fileOperation).getFileName().contains("xml"))
+            this.mapper = new XmlMapper();
     }
 
     @Override

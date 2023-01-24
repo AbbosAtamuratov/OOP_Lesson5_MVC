@@ -1,11 +1,10 @@
 package personal;
 
 import personal.controllers.UserController;
-import personal.model.FileOperation;
-import personal.model.FileManager;
-import personal.model.Repository;
-import personal.model.RepositoryFile;
+import personal.model.*;
 import personal.views.ViewUser;
+
+import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
@@ -16,5 +15,6 @@ public class Main {
         UserController controller = new UserController(repository);
         ViewUser view = new ViewUser(controller);
         view.run();
+
     }
 }

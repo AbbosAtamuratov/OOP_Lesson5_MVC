@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<users>
+<user id="1">
+<firstName>Billy</firstName>
+<lastName>Harrington</lastName>
+<phone>213</phone>
+</user>
+
+<user id="2">
+<firstName>Van</firstName>
+<lastName>Darkholm</lastName>
+<phone>123</phone>
+</user>
+
+<user id="3">
+<firstName>Ricardo</firstName>
+<lastName>Milos</lastName>
+<phone>222</phone>
+</user>
+
+</users>

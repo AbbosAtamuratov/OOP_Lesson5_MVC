@@ -20,6 +20,7 @@ public class User {
     }
 
     public User (HashMap<String, String> user){
+        this.id = user.get("id");
         this.firstName = user.get("firstName");
         this.lastName = user.get("lastName");
         this.phone = user.get("phone");
